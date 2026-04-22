@@ -1,0 +1,573 @@
+/* --- Global Resets & Variables --- */
+:root {
+    --bg-dark: #0A0B10;
+    --card-bg: #13151C;
+    --card-border: #222533;
+    
+    --primary-orange: #FF7722;
+    --primary-orange-hover: #FF8C44;
+    --primary-purple: #9D33FF;
+    --secondary-purple: #D3A4FF;
+    
+    --text-main: #FFFFFF;
+    --text-muted: #8A8D98;
+    --text-sub: #A0A5B5;
+
+    --font-heading: 'Poppins', sans-serif;
+    --font-body: 'Inter', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-body);
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+    overflow-x: hidden;
+    line-height: 1.6;
+}
+
+/* --- WebGL Canvas --- */
+#webgl-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1; 
+    pointer-events: none; 
+}
+
+/* --- Navigation --- */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 1.5rem 4rem;
+    z-index: 1000;
+    transition: background 0.3s ease;
+}
+
+.nav-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Corner Logo Made Significantly Bigger */
+.nav-logo {
+    height: 75px; 
+    width: auto;
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    filter: drop-shadow(0 4px 10px rgba(255, 119, 34, 0.2));
+}
+
+.nav-logo:hover {
+    transform: scale(1.1) rotate(-2deg);
+}
+
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-links a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.nav-links a:hover {
+    color: var(--text-main);
+}
+
+/* --- 3D / WebGL Style Interactive Buttons --- */
+.webgl-btn {
+    position: relative;
+    background: linear-gradient(90deg, var(--primary-orange), #ff3366, var(--primary-purple), var(--primary-orange));
+    background-size: 300% 100%;
+    animation: gradient-shift 6s ease infinite;
+    color: #fff;
+    border: none;
+    padding: 0.6rem 1.5rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.95rem;
+    cursor: pointer;
+    
+    transform: perspective(500px) translateZ(0);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.5), inset 0 2px 0 rgba(255,255,255,0.3);
+    transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.2s ease;
+}
+
+.webgl-btn:hover {
+    transform: perspective(500px) translateZ(15px) scale(1.05);
+    box-shadow: 0 15px 30px rgba(255, 119, 34, 0.4), 0 0 15px rgba(157, 51, 255, 0.5), inset 0 2px 0 rgba(255,255,255,0.5);
+}
+
+.webgl-btn:active {
+    transform: perspective(500px) translateZ(0px) scale(0.95);
+    box-shadow: 0 5px 10px rgba(0,0,0,0.5);
+}
+
+.webgl-btn-purple {
+    background: linear-gradient(90deg, var(--primary-purple), #ff33ff, #5500ff, var(--primary-purple));
+    background-size: 300% 100%;
+}
+
+@keyframes gradient-shift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* --- Hero Section --- */
+.hero-section {
+    min-height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0 2rem;
+    margin-top: 60px;
+}
+
+.hero-content {
+    max-width: 800px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+/* Hero WebGL Logo Container - INCREASED SIZE */
+.hero-logo-container {
+    width: 100%;
+    max-width: 800px; 
+    height: 500px; 
+    margin-bottom: -2rem; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 10;
+}
+
+.hero-title {
+    font-family: var(--font-heading);
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: #FFE5D0; 
+    margin-bottom: 0.5rem;
+    line-height: 1.2;
+    z-index: 11;
+}
+
+.hero-subtitle {
+    font-size: 1.5rem;
+    color: var(--text-sub);
+    margin-bottom: 3rem;
+    z-index: 11;
+}
+
+/* Global Form */
+.hero-form {
+    width: 100%;
+    max-width: 550px;
+    z-index: 11;
+}
+
+.input-group {
+    display: flex;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 0.4rem;
+    margin-bottom: 0.5rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.input-group:focus-within {
+    border-color: rgba(255, 119, 34, 0.5);
+    box-shadow: 0 0 15px rgba(255, 119, 34, 0.2);
+}
+
+.hero-email-input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    padding: 1rem 1.5rem;
+    color: white;
+    font-size: 1.1rem;
+    outline: none;
+}
+
+.hero-email-input::placeholder {
+    color: #5A5D6A;
+}
+
+.hero-notify-btn {
+    padding: 0 2rem;
+    font-size: 1.1rem;
+}
+
+.hero-notify-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    animation: none;
+}
+
+/* Formspree Status Messages */
+.fs-success-msg {
+    display: none;
+    color: #4ade80;
+    background: rgba(74, 222, 128, 0.1);
+    padding: 0.8rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    font-weight: 600;
+    border: 1px solid rgba(74, 222, 128, 0.2);
+}
+
+.fs-error-msg {
+    display: none;
+    color: #f87171;
+    background: rgba(248, 113, 113, 0.1);
+    padding: 0.8rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    font-weight: 600;
+    border: 1px solid rgba(248, 113, 113, 0.2);
+}
+
+.fs-field-error {
+    color: #f87171;
+    font-size: 0.85rem;
+    display: block;
+    text-align: left;
+    margin-top: -0.2rem;
+    margin-bottom: 0.8rem;
+    padding-left: 1rem;
+}
+
+div[data-fs-success]:not(:empty) {
+    display: block;
+}
+div[data-fs-error]:not(:empty) {
+    display: block;
+}
+
+.form-disclaimer {
+    font-size: 0.9rem;
+    color: #5A5D6A;
+}
+
+/* --- Games Showcase Section --- */
+.games-section {
+    padding: 4rem 2rem 8rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.games-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+    gap: 2.5rem;
+}
+
+/* Continuous Floating Animation for Cards */
+@keyframes float {
+    0% { transform: translateY(0px); box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3); }
+    50% { transform: translateY(-15px); box-shadow: 0 30px 50px rgba(0, 0, 0, 0.5); }
+    100% { transform: translateY(0px); box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3); }
+}
+
+.game-card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 20px;
+    padding: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    animation: float 6s ease-in-out infinite;
+    transition: border-color 0.3s ease;
+}
+
+.game-card:nth-child(2) {
+    animation-delay: 3s;
+}
+
+.game-card:hover {
+    border-color: rgba(255, 255, 255, 0.1);
+    animation-play-state: paused;
+}
+
+/* Badges */
+.badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.4rem 1rem;
+    border-radius: 50px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    width: max-content;
+    margin-bottom: 2rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.badge .dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+}
+
+.badge-purple {
+    background: rgba(157, 51, 255, 0.1);
+    color: #D3A4FF;
+    border-color: rgba(157, 51, 255, 0.2);
+}
+.badge-purple .dot { background-color: #D3A4FF; }
+
+.badge-orange {
+    background: rgba(255, 119, 34, 0.1);
+    color: #FFB380;
+    border-color: rgba(255, 119, 34, 0.2);
+}
+.badge-orange .dot { background-color: #FFB380; }
+
+/* Logos inside Cards */
+.card-logo-container {
+    height: 140px; 
+    display: flex;
+    align-items: center;
+    margin-bottom: 2.5rem;
+    position: relative;
+}
+
+.card-game-logo {
+    max-height: 130px; 
+    max-width: 320px; 
+    object-fit: contain;
+}
+
+.tilted-logo {
+    transform: rotate(-6deg);
+}
+
+/* Card Content */
+.card-game-title {
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    letter-spacing: 0.5px;
+    margin-bottom: 1rem;
+}
+
+.card-game-desc {
+    font-size: 1.05rem;
+    color: var(--text-sub);
+    margin-bottom: 2rem;
+    flex-grow: 1; 
+}
+
+/* Stats */
+.game-stats {
+    display: flex;
+    gap: 1.5rem;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    margin-bottom: 2rem;
+}
+
+.game-stats span {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* Buy Buttons for Functionality */
+.buy-button {
+    display: block;
+    text-align: center;
+    padding: 1rem; 
+    margin-bottom: 1.5rem;
+}
+
+.disabled-buy {
+    background-color: rgba(255, 255, 255, 0.05);
+    color: #5A5D6A;
+    border: 1px solid rgba(255,255,255,0.1);
+    cursor: not-allowed;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 700;
+    display: block;
+    text-align: center;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+/* Card Specific Email Form */
+.card-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.card-input-wrapper {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.card-input-wrapper input {
+    flex: 1;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 1rem;
+    color: white;
+    font-size: 0.95rem;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.card-input-wrapper input:focus {
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.card-input-wrapper button {
+    width: 55px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+}
+
+.card-input-wrapper button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    animation: none;
+}
+
+.card-fs-msg {
+    margin-bottom: 0.5rem;
+}
+
+/* --- About Section & Interactive Text Glow --- */
+.about-section {
+    padding: 4rem 2rem 8rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.section-heading {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.about-title {
+    font-family: var(--font-heading);
+    font-size: 3rem;
+    color: var(--primary-orange);
+    margin-bottom: 0.5rem;
+}
+
+.about-subtitle {
+    font-size: 1.2rem;
+    color: var(--text-sub);
+}
+
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+}
+
+.about-card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 20px;
+    padding: 3rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.about-card h3 {
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    color: white;
+    margin-bottom: 1.5rem;
+}
+
+/* This container holds the mouse variables injected by main.js */
+.interactive-text-container {
+    position: relative;
+    --mouse-x: 50%;
+    --mouse-y: 50%;
+}
+
+.interactive-text {
+    font-size: 1.15rem;
+    line-height: 1.8;
+    color: var(--text-sub);
+    /* Default gradient that will be revealed on hover */
+    background: radial-gradient(400px circle at var(--mouse-x) var(--mouse-y), #ffffff 0%, #ff8c00 40%, var(--primary-purple) 80%, var(--text-sub) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    /* Default state: color fills the text so the background gradient is hidden */
+    -webkit-text-fill-color: var(--text-sub);
+    transition: -webkit-text-fill-color 0.3s ease;
+}
+
+/* Hover state: makes the text transparent so the cool glowing background shows through! */
+.about-card:hover .interactive-text {
+    -webkit-text-fill-color: transparent;
+}
+
+
+/* --- Responsive --- */
+@media (max-width: 900px) {
+    .games-grid {
+        grid-template-columns: 1fr;
+    }
+    .hero-title {
+        font-size: 2.5rem;
+    }
+    .input-group {
+        flex-direction: column;
+        background: transparent;
+        border: none;
+    }
+    .hero-email-input {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 8px;
+        margin-bottom: 1rem;
+    }
+    .hero-notify-btn {
+        padding: 1rem;
+    }
+    .hero-logo-container {
+        height: 300px;
+    }
+}

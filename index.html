@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Incredible Gaemz | Coming Soon</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <canvas id="webgl-canvas"></canvas>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo-container">
+                <img src="LOGO.png" alt="Incredible Gaemz Logo" class="nav-logo">
+            </div>
+            <div class="nav-right">
+                <ul class="nav-links">
+                    <li><a href="#games">Games</a></li>
+                    <li><a href="#about">About</a></li>
+                </ul>
+                <a href="#notify-section" class="nav-btn-orange webgl-btn">Get Notified</a>
+            </div>
+        </div>
+    </nav>
+
+    <header id="notify-section" class="hero-section">
+        <div class="hero-content">
+            <div id="hero-logo-container" class="hero-logo-container" style="cursor: pointer;" title="Click for a surprise!"></div>
+            
+            <h1 class="hero-title">Something incredible is coming.</h1>
+            <p class="hero-subtitle">Games that bring people together.</p>
+            
+            <form id="hero-form" class="hero-form">
+                <div data-fs-success class="fs-success-msg"></div>
+                <div data-fs-error class="fs-error-msg"></div>
+
+                <div class="input-group">
+                    <input type="email" name="email" id="hero-email" placeholder="your@email.com" required class="hero-email-input" data-fs-field>
+                    <button type="submit" class="hero-notify-btn webgl-btn" data-fs-submit-btn>Notify Me</button>
+                </div>
+                <span data-fs-error="email" class="fs-field-error"></span>
+                <p class="form-disclaimer">Be the first to know when we launch. No spam, ever.</p>
+            </form>
+        </div>
+    </header>
+
+    <section id="games" class="games-section">
+        <div class="games-grid">
+            
+            <div class="game-card">
+                <div class="badge badge-purple">
+                    <span class="dot"></span> LAUNCHING SOON
+                </div>
+                <div class="card-logo-container">
+                    <img src="logo eack-jukebox-bg-removed.png" alt="Rack 'em Up Logo" class="card-game-logo tilted-logo">
+                </div>
+                
+                <h3 class="card-game-title">THE ORIGINAL CARD GAME</h3>
+                <p class="card-game-desc">
+                    A fast, strategic card game packed with tension, comebacks, and chaos. You take turns drawing cards that grant positive or negative points. Utilize powerful action cards to shift the momentum, and rack up the most points before your opponents shut you down. Coming to your table very soon. Ends instantly when the X card is drawn!
+                </p>
+                
+                <div class="game-stats">
+                    <span><i class="fa-solid fa-layer-group"></i> Card Game</span>
+                    <span><i class="fa-solid fa-user-group"></i> 2–6 Players</span>
+                    <span><i class="fa-regular fa-clock"></i> 20–45 min</span>
+                </div>
+
+                <button class="buy-button disabled-buy" disabled style="width: 100%;">Coming Soon</button>
+
+                <form id="card-form-rack" class="card-form">
+                    <div data-fs-success class="fs-success-msg card-fs-msg"></div>
+                    <div data-fs-error class="fs-error-msg card-fs-msg"></div>
+                    
+                    <div class="card-input-wrapper">
+                        <input type="hidden" name="game_interest" value="Rack em Up">
+                        <input type="email" name="email" placeholder="Get notified when it launches" required data-fs-field>
+                        <button type="submit" aria-label="Notify" data-fs-submit-btn class="webgl-btn"><i class="fa-regular fa-bell"></i></button>
+                    </div>
+                    <span data-fs-error="email" class="fs-field-error"></span>
+                </form>
+            </div>
+
+            <div class="game-card">
+                <div class="badge badge-orange">
+                    <span class="dot"></span> IN DEVELOPMENT
+                </div>
+                <div class="card-logo-container">
+                    <img src="STICKWARS (1).png" alt="Stick Wars Logo" class="card-game-logo">
+                    </div>
+                
+                <h3 class="card-game-title">THE BATTLE CARD GAME</h3>
+                <p class="card-game-desc">
+                    Deploy your stick warriors, set traps, and blow up your enemies' kingdoms. Play as invisible P1, poison P2, or clone P3. Manage your Health (HP) and Energy (E). The GM oversees the chaos, and once you say something, it is final! Explosive card battles with big laughs and bigger upsets. Currently in active development.
+                </p>
+                
+                <div class="game-stats">
+                    <span><i class="fa-solid fa-layer-group"></i> Battle Game</span>
+                    <span><i class="fa-solid fa-user-group"></i> 2–4 Players</span>
+                    <span><i class="fa-regular fa-clock"></i> 30–60 min</span>
+                </div>
+
+                <button class="buy-button disabled-buy" disabled>Not Yet Available for Purchase</button>
+
+                <form id="card-form-stick" class="card-form">
+                    <div data-fs-success class="fs-success-msg card-fs-msg"></div>
+                    <div data-fs-error class="fs-error-msg card-fs-msg"></div>
+
+                    <div class="card-input-wrapper">
+                        <input type="hidden" name="game_interest" value="Stick Wars">
+                        <input type="email" name="email" placeholder="Get notified when it launches" required data-fs-field>
+                        <button type="submit" aria-label="Notify" data-fs-submit-btn class="webgl-btn"><i class="fa-regular fa-bell"></i></button>
+                    </div>
+                    <span data-fs-error="email" class="fs-field-error"></span>
+                </form>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="about" class="about-section">
+        <div class="section-heading">
+            <h2 class="about-title">About Incredible Gaemz</h2>
+            <p class="about-subtitle">Developed and designed by Caleb Abbe</p>
+        </div>
+
+        <div class="about-grid">
+            <div class="about-card">
+                <h3>Our Mission</h3>
+                <div class="interactive-text-container">
+                    <p class="interactive-text">
+                        I want to encourage families and friends across the country to spend more time with each other and less time staring at a screen. My company makes unique board and card games filled with entertainment for the whole family. I will support the slowly dying industry of board and card games by giving people new and fun options. I target mostly kids and teens, but anyone that likes to play games is in my target market.
+                    </p>
+                </div>
+            </div>
+
+            <div class="about-card">
+                <h3>The Story & Opportunity</h3>
+                <div class="interactive-text-container">
+                    <p class="interactive-text">
+                        When I was young, I used to make simple games and fun little things out of paper. Right now, I have four card/board games that I think, with enough effort, I could make into real games. I see the market for physical games pretty empty right now. Everybody is playing old games or extensions and other versions of them; there has not been a new popular board/card game in a while. My games will invoke imagination and creativity for being unique from these and add a whole new set of game ideas that have not been created yet.
+                    </p>
+                </div>
+            </div>
+
+            <div class="about-card">
+                <h3>Products & Operation</h3>
+                <div class="interactive-text-container">
+                    <p class="interactive-text">
+                        All of my games have some sort of new and interesting mechanic embedded into them. My two that have prototypes so far (Stick Wars and Rack ‘em Up) each have their own interesting game mechanic. I already have two more that are still in development and testing that I plan to design and produce after these. My advantage is that my games are unique and not like others that have been around for years. They are fresh out of the oven and ready for an open market.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="webgl.js"></script>
+    <script src="main.js"></script>
+    
+    <script>
+        window.formspree = window.formspree || function () { (formspree.q = formspree.q || []).push(arguments); };
+        formspree('initForm', { formElement: '#hero-form', formId: 'xkokqdyo' });
+        formspree('initForm', { formElement: '#card-form-rack', formId: 'xkokqdyo' });
+        formspree('initForm', { formElement: '#card-form-stick', formId: 'xkokqdyo' });
+    </script>
+    <script src="https://unpkg.com/@formspree/ajax@1" defer></script>
+</body>
+</html>
