@@ -1,27 +1,57 @@
-/* --- Global Resets & Variables --- */
-:root {
-    --bg-dark: #0A0B10;
-    --card-bg: #13151C;
-    --card-border: #222533;
-    
-    --primary-orange: #FF7722;
-    --primary-orange-hover: #FF8C44;
-    --primary-purple: #9D33FF;
-    --secondary-purple: #D3A4FF;
-    
-    --text-main: #FFFFFF;
-    --text-muted: #8A8D98;
-    --text-sub: #A0A5B5;
+::-webkit-scrollbar {
+    width: 12px;
+    transition: width 0.3s;
+}
 
-    --font-heading: 'Poppins', sans-serif;
-    --font-body: 'Inter', sans-serif;
+::-webkit-scrollbar-track {
+    background: #0A0B10;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.8);
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #FF7722, #9D33FF);
+    border-radius: 10px;
+    border: 3px solid #0A0B10; 
+    box-shadow: inset 2px 2px 5px rgba(255, 255, 255, 0.3);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #FF8C44, #D3A4FF);
+    border: 1px solid #0A0B10; 
+    box-shadow: inset -2px -2px 6px rgba(0, 0, 0, 0.5), inset 2px 2px 8px rgba(255, 255, 255, 0.8);
+    cursor: grab;
+}
+
+::-webkit-scrollbar-thumb:active {
+    background: linear-gradient(180deg, #e65c00, #7a00cc);
+    border: 4px solid #0A0B10; 
+    box-shadow: inset 4px 4px 10px rgba(0, 0, 0, 0.9);
+    cursor: grabbing;
 }
 
 * {
+    scrollbar-width: thin;
+    scrollbar-color: #FF7722 #0A0B10;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     scroll-behavior: smooth;
+}
+
+:root {
+    --bg-dark: #0A0B10;
+    --card-bg: #13151C;
+    --card-border: #222533;
+    --primary-orange: #FF7722;
+    --primary-orange-hover: #FF8C44;
+    --primary-purple: #9D33FF;
+    --secondary-purple: #D3A4FF;
+    --text-main: #FFFFFF;
+    --text-muted: #8A8D98;
+    --text-sub: #A0A5B5;
+    --font-heading: 'Poppins', sans-serif;
+    --font-body: 'Inter', sans-serif;
 }
 
 body {
@@ -32,7 +62,6 @@ body {
     line-height: 1.6;
 }
 
-/* --- WebGL Canvas --- */
 #webgl-canvas {
     position: fixed;
     top: 0;
@@ -43,12 +72,11 @@ body {
     pointer-events: none; 
 }
 
-/* --- Navigation --- */
 .navbar {
     position: fixed;
     top: 0;
     width: 100%;
-    padding: 1.5rem 4rem;
+    padding: 1.5rem clamp(1rem, 4vw, 4rem);
     z-index: 1000;
     transition: background 0.3s ease;
 }
@@ -61,9 +89,8 @@ body {
     align-items: center;
 }
 
-/* Corner Logo Made Significantly Bigger */
 .nav-logo {
-    height: 75px; 
+    height: clamp(50px, 6vw, 75px); 
     width: auto;
     transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     filter: drop-shadow(0 4px 10px rgba(255, 119, 34, 0.2));
@@ -97,7 +124,6 @@ body {
     color: var(--text-main);
 }
 
-/* --- 3D / WebGL Style Interactive Buttons --- */
 .webgl-btn {
     position: relative;
     background: linear-gradient(90deg, var(--primary-orange), #ff3366, var(--primary-purple), var(--primary-orange));
@@ -105,16 +131,16 @@ body {
     animation: gradient-shift 6s ease infinite;
     color: #fff;
     border: none;
-    padding: 0.6rem 1.5rem;
+    padding: clamp(0.4rem, 1vw, 0.6rem) clamp(1rem, 2vw, 1.5rem);
     border-radius: 8px;
     text-decoration: none;
     font-weight: 700;
-    font-size: 0.95rem;
+    font-size: clamp(0.85rem, 1.5vw, 0.95rem);
     cursor: pointer;
-    
     transform: perspective(500px) translateZ(0);
     box-shadow: 0 10px 20px rgba(0,0,0,0.5), inset 0 2px 0 rgba(255,255,255,0.3);
     transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.2s ease;
+    overflow: hidden; 
 }
 
 .webgl-btn:hover {
@@ -138,7 +164,6 @@ body {
     100% { background-position: 0% 50%; }
 }
 
-/* --- Hero Section --- */
 .hero-section {
     min-height: 80vh;
     display: flex;
@@ -157,22 +182,22 @@ body {
     width: 100%;
 }
 
-/* Hero WebGL Logo Container - INCREASED SIZE */
 .hero-logo-container {
     width: 100%;
     max-width: 800px; 
-    height: 500px; 
+    height: clamp(250px, 45vw, 500px); 
     margin-bottom: -2rem; 
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
     z-index: 10;
+    cursor: pointer;
 }
 
 .hero-title {
     font-family: var(--font-heading);
-    font-size: 3.5rem;
+    font-size: clamp(2rem, 5vw, 3.5rem);
     font-weight: 700;
     color: #FFE5D0; 
     margin-bottom: 0.5rem;
@@ -181,13 +206,12 @@ body {
 }
 
 .hero-subtitle {
-    font-size: 1.5rem;
+    font-size: clamp(1.1rem, 2.5vw, 1.5rem);
     color: var(--text-sub);
     margin-bottom: 3rem;
     z-index: 11;
 }
 
-/* Global Form */
 .hero-form {
     width: 100%;
     max-width: 550px;
@@ -213,7 +237,7 @@ body {
     flex: 1;
     background: transparent;
     border: none;
-    padding: 1rem 1.5rem;
+    padding: clamp(0.8rem, 1.5vw, 1rem) 1.5rem;
     color: white;
     font-size: 1.1rem;
     outline: none;
@@ -234,7 +258,6 @@ body {
     animation: none;
 }
 
-/* Formspree Status Messages */
 .fs-success-msg {
     display: none;
     color: #4ade80;
@@ -279,20 +302,18 @@ div[data-fs-error]:not(:empty) {
     color: #5A5D6A;
 }
 
-/* --- Games Showcase Section --- */
 .games-section {
-    padding: 4rem 2rem 8rem;
+    padding: clamp(2rem, 5vw, 4rem) 2rem 8rem;
     max-width: 1200px;
     margin: 0 auto;
 }
 
 .games-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 450px), 1fr));
     gap: 2.5rem;
 }
 
-/* Continuous Floating Animation for Cards */
 @keyframes float {
     0% { transform: translateY(0px); box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3); }
     50% { transform: translateY(-15px); box-shadow: 0 30px 50px rgba(0, 0, 0, 0.5); }
@@ -303,7 +324,7 @@ div[data-fs-error]:not(:empty) {
     background-color: var(--card-bg);
     border: 1px solid var(--card-border);
     border-radius: 20px;
-    padding: 2.5rem;
+    padding: clamp(1.5rem, 3vw, 2.5rem);
     display: flex;
     flex-direction: column;
     animation: float 6s ease-in-out infinite;
@@ -319,7 +340,6 @@ div[data-fs-error]:not(:empty) {
     animation-play-state: paused;
 }
 
-/* Badges */
 .badge {
     display: inline-flex;
     align-items: center;
@@ -354,18 +374,19 @@ div[data-fs-error]:not(:empty) {
 }
 .badge-orange .dot { background-color: #FFB380; }
 
-/* Logos inside Cards */
 .card-logo-container {
-    height: 140px; 
+    height: clamp(200px, 30vw, 280px); 
+    width: 100%;
     display: flex;
     align-items: center;
+    justify-content: center;
     margin-bottom: 2.5rem;
     position: relative;
 }
 
 .card-game-logo {
-    max-height: 130px; 
-    max-width: 320px; 
+    max-height: 100%; 
+    max-width: 100%; 
     object-fit: contain;
 }
 
@@ -373,7 +394,6 @@ div[data-fs-error]:not(:empty) {
     transform: rotate(-6deg);
 }
 
-/* Card Content */
 .card-game-title {
     font-family: var(--font-body);
     font-size: 0.9rem;
@@ -388,11 +408,12 @@ div[data-fs-error]:not(:empty) {
     color: var(--text-sub);
     margin-bottom: 2rem;
     flex-grow: 1; 
+    line-height: 1.8;
 }
 
-/* Stats */
 .game-stats {
     display: flex;
+    flex-wrap: wrap;
     gap: 1.5rem;
     color: var(--text-muted);
     font-size: 0.9rem;
@@ -405,7 +426,6 @@ div[data-fs-error]:not(:empty) {
     gap: 0.5rem;
 }
 
-/* Buy Buttons for Functionality */
 .buy-button {
     display: block;
     text-align: center;
@@ -427,7 +447,6 @@ div[data-fs-error]:not(:empty) {
     margin-bottom: 1.5rem;
 }
 
-/* Card Specific Email Form */
 .card-form {
     display: flex;
     flex-direction: column;
@@ -473,7 +492,6 @@ div[data-fs-error]:not(:empty) {
     margin-bottom: 0.5rem;
 }
 
-/* --- About Section & Interactive Text Glow --- */
 .about-section {
     padding: 4rem 2rem 8rem;
     max-width: 1000px;
@@ -487,13 +505,13 @@ div[data-fs-error]:not(:empty) {
 
 .about-title {
     font-family: var(--font-heading);
-    font-size: 3rem;
+    font-size: clamp(2.5rem, 6vw, 3rem);
     color: var(--primary-orange);
     margin-bottom: 0.5rem;
 }
 
 .about-subtitle {
-    font-size: 1.2rem;
+    font-size: clamp(1rem, 2.5vw, 1.2rem);
     color: var(--text-sub);
 }
 
@@ -507,9 +525,8 @@ div[data-fs-error]:not(:empty) {
     background-color: var(--card-bg);
     border: 1px solid var(--card-border);
     border-radius: 20px;
-    padding: 3rem;
+    padding: clamp(2rem, 5vw, 3rem);
     position: relative;
-    overflow: hidden;
 }
 
 .about-card h3 {
@@ -519,39 +536,83 @@ div[data-fs-error]:not(:empty) {
     margin-bottom: 1.5rem;
 }
 
-/* This container holds the mouse variables injected by main.js */
 .interactive-text-container {
     position: relative;
-    --mouse-x: 50%;
-    --mouse-y: 50%;
 }
 
 .interactive-text {
     font-size: 1.15rem;
     line-height: 1.8;
-    color: var(--text-sub);
-    /* Default gradient that will be revealed on hover */
-    background: radial-gradient(400px circle at var(--mouse-x) var(--mouse-y), #ffffff 0%, #ff8c00 40%, var(--primary-purple) 80%, var(--text-sub) 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    /* Default state: color fills the text so the background gradient is hidden */
-    -webkit-text-fill-color: var(--text-sub);
-    transition: -webkit-text-fill-color 0.3s ease;
+    position: relative;
+    z-index: 2;
+    color: var(--text-sub); 
+    transform: translateZ(0);
 }
 
-/* Hover state: makes the text transparent so the cool glowing background shows through! */
-.about-card:hover .interactive-text {
-    -webkit-text-fill-color: transparent;
+.body-spin .word {
+    display: inline-block;
+    opacity: 0; 
+    color: var(--text-sub); 
+    transform: translateY(-50px) rotate(-20deg) scale(0.8);
 }
 
+.body-spin.shine-active .word {
+    transform: translate3d(var(--wiggle-x, 0px), var(--wiggle-y, 0px), 0px);
+    will-change: transform;
+}
 
-/* --- Responsive --- */
-@media (max-width: 900px) {
-    .games-grid {
-        grid-template-columns: 1fr;
+.body-spin.animate .word {
+    animation: leaf-fall-random 1.5s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+@keyframes leaf-fall {
+    0% {
+        opacity: 0;
+        transform: translateY(-30px) rotate(-10deg);
     }
-    .hero-title {
-        font-size: 2.5rem;
+    100% {
+        opacity: 1; 
+        transform: none;
+    }
+}
+
+@keyframes leaf-fall-random {
+    0% { 
+        opacity: 0; 
+        transform: translateY(-50px) translateX(-10px) rotate(-20deg) scale(0.8); 
+    }
+    50% { 
+        opacity: 0.8; 
+        transform: translateY(10px) translateX(10px) rotate(10deg) scale(1.05); 
+    }
+    100% { 
+        opacity: 1; 
+        transform: translateY(0) translateX(0) rotate(0) scale(1); 
+    }
+}
+
+.header-load .word {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(30px) scaleY(1.3);
+    filter: blur(8px);
+}
+
+.header-load.animate .word {
+    animation: header-load-anim 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+@keyframes header-load-anim {
+    100% {
+        opacity: 1;
+        transform: translateY(0) scaleY(1);
+        filter: blur(0);
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-links {
+        display: none; 
     }
     .input-group {
         flex-direction: column;
@@ -566,8 +627,5 @@ div[data-fs-error]:not(:empty) {
     }
     .hero-notify-btn {
         padding: 1rem;
-    }
-    .hero-logo-container {
-        height: 300px;
     }
 }
