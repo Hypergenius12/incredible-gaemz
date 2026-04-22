@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Incredible Gaemz creates unique, fun board and card games designed to bring families and friends together. Discover our upcoming games like Rack 'em Up and Stick Wars!">
-    <link rel="icon" type="image/png" href="LOGO.png">
-    
+    <meta name="description" content="Incredible Gaemzcreates unique, fun board and card games designed to bring families and friends together. Discover our upcoming games like Rack 'em Up and Stick Wars!">
+    <meta name="keywords" content="Incredible Gaemz, Incredible Games, Incredible Gamez, Incredible Gaems, board games, card games, tabletop games">
+    <link rel="icon" type="image/png" sizes="any" href="LOGO (2).png">
+    <link rel="apple-touch-icon" href="LOGO (2).png">
     <title>Incredible Gaemz | Coming Soon</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;700;900&display=swap" rel="stylesheet">
@@ -29,55 +30,43 @@
         </div>
     </nav>
 
-    <header id="notify-section" class="hero-section">
+    <header id="notify-section" class="hero-section interactive-text-container">
         <div class="hero-content">
-            <div id="hero-logo-container" class="hero-logo-container" style="cursor: pointer;" title="Click for a surprise!"></div>
-            
-            <h1 class="hero-title">Something incredible is coming.</h1>
-            <p class="hero-subtitle">Games that bring people together.</p>
-            
+            <div id="hero-logo-container" class="hero-logo-container" title="Click for a surprise!"></div>
+            <h1 class="hero-title header-load">Something incredible is coming.</h1>
+            <p class="hero-subtitle interactive-text body-spin">Games that bring people together.</p>
             <form id="hero-form" class="hero-form">
                 <div data-fs-success class="fs-success-msg"></div>
                 <div data-fs-error class="fs-error-msg"></div>
-
                 <div class="input-group">
                     <input type="email" name="email" id="hero-email" placeholder="your@email.com" required class="hero-email-input" data-fs-field>
                     <button type="submit" class="hero-notify-btn webgl-btn" data-fs-submit-btn>Notify Me</button>
                 </div>
                 <span data-fs-error="email" class="fs-field-error"></span>
-                <p class="form-disclaimer">Be the first to know when we launch. No spam, ever.</p>
+                <p class="form-disclaimer interactive-text body-spin">Be the first to know when we launch.</p>
             </form>
         </div>
     </header>
 
     <section id="games" class="games-section">
         <div class="games-grid">
-            
-            <div class="game-card">
+            <div class="game-card interactive-text-container">
                 <div class="badge badge-purple">
                     <span class="dot"></span> LAUNCHING SOON
                 </div>
-                <div class="card-logo-container">
-                    <img src="logo eack-jukebox-bg-removed.png" alt="Rack 'em Up Logo" class="card-game-logo tilted-logo">
-                </div>
-                
-                <h3 class="card-game-title">THE ORIGINAL CARD GAME</h3>
-                <p class="card-game-desc">
-                    A fast, strategic card game packed with tension, comebacks, and chaos. You take turns drawing cards that grant positive or negative points. Utilize powerful action cards to shift the momentum, and rack up the most points before your opponents shut you down. Coming to your table very soon. Ends instantly when the X card is drawn!
-                </p>
-                
+                <div class="card-logo-container" id="rack-logo-container"></div>
+                <h3 class="card-game-title header-load">THE ORIGINAL CARD GAME</h3>
+                <p class="card-game-desc interactive-text body-spin">
+                    A quick and simple card game packed with tension, comebacks, and chaos. You take turns drawing cards that grant positive or negative points. Utilize action cards to shift the momentum, and rack up the most points before that game is over. Coming to your table very soon.</p>
                 <div class="game-stats">
                     <span><i class="fa-solid fa-layer-group"></i> Card Game</span>
                     <span><i class="fa-solid fa-user-group"></i> 2–6 Players</span>
-                    <span><i class="fa-regular fa-clock"></i> 20–45 min</span>
+                    <span><i class="fa-regular fa-clock"></i> 1-10 min</span>
                 </div>
-
                 <button class="buy-button disabled-buy" disabled style="width: 100%;">Coming Soon</button>
-
                 <form id="card-form-rack" class="card-form">
                     <div data-fs-success class="fs-success-msg card-fs-msg"></div>
                     <div data-fs-error class="fs-error-msg card-fs-msg"></div>
-                    
                     <div class="card-input-wrapper">
                         <input type="hidden" name="game_interest" value="Rack em Up">
                         <input type="email" name="email" placeholder="Get notified when it launches" required data-fs-field>
@@ -87,31 +76,24 @@
                 </form>
             </div>
 
-            <div class="game-card">
+            <div class="game-card interactive-text-container">
                 <div class="badge badge-orange">
                     <span class="dot"></span> IN DEVELOPMENT
                 </div>
-                <div class="card-logo-container">
-                    <img src="STICKWARS (1).png" alt="Stick Wars Logo" class="card-game-logo">
-                    </div>
-                
-                <h3 class="card-game-title">THE BATTLE CARD GAME</h3>
-                <p class="card-game-desc">
-                    Deploy your stick warriors, set traps, and blow up your enemies' kingdoms. Play as invisible P1, poison P2, or clone P3. Manage your Health (HP) and Energy (E). The GM oversees the chaos, and once you say something, it is final! Explosive card battles with big laughs and bigger upsets. Currently in active development.
+                <div class="card-logo-container" id="stick-logo-container"></div>
+                <h3 class="card-game-title header-load">THE BATTLE CARD GAME</h3>
+                <p class="card-game-desc interactive-text body-spin">
+                    Deploy your stick warriors and ignite the chaos. Command unique powers, scavenge powerful weapons, and outsmart your rivals in an all-out tactical brawl. With total freedom to use your abilities any way you choose, every battle is a new story of infinite fun. Currently in active development.
                 </p>
-                
                 <div class="game-stats">
                     <span><i class="fa-solid fa-layer-group"></i> Battle Game</span>
-                    <span><i class="fa-solid fa-user-group"></i> 2–4 Players</span>
-                    <span><i class="fa-regular fa-clock"></i> 30–60 min</span>
+                    <span><i class="fa-solid fa-user-group"></i> 2–9 Players</span>
+                    <span><i class="fa-regular fa-clock"></i> 20–45 min</span>
                 </div>
-
                 <button class="buy-button disabled-buy" disabled>Not Yet Available for Purchase</button>
-
                 <form id="card-form-stick" class="card-form">
                     <div data-fs-success class="fs-success-msg card-fs-msg"></div>
                     <div data-fs-error class="fs-error-msg card-fs-msg"></div>
-
                     <div class="card-input-wrapper">
                         <input type="hidden" name="game_interest" value="Stick Wars">
                         <input type="email" name="email" placeholder="Get notified when it launches" required data-fs-field>
@@ -120,32 +102,36 @@
                     <span data-fs-error="email" class="fs-field-error"></span>
                 </form>
             </div>
-
         </div>
     </section>
 
     <section id="about" class="about-section">
         <div class="section-heading">
-            <h2 class="about-title">About Incredible Gaemz</h2>
-            <p class="about-subtitle">Developed and designed by Caleb Abbe</p>
+            <h2 class="about-title header-load">About Incredible Gaemz</h2>
+            <p class="about-subtitle interactive-text body-spin">Developed and designed by Caleb Abbe</p>
         </div>
-
         <div class="about-grid">
-            <div class="about-card">
-                <h3>The Mission</h3>
-                <div class="interactive-text-container">
-                    <p class="interactive-text">
+            <div class="about-card interactive-text-container">
+                <h3 class="header-load">The Mission</h3>
+                <div>
+                    <p class="interactive-text body-spin">
                         I want to encourage families and friends across the country to spend more time with each other and less time staring at a screen. My company makes unique board and card games filled with entertainment for the whole family. This company plans to support the slowly dying industry of board and card games by giving people new fun options. This company is just starting up and needs all the support it can get. It is currently being run by a 16 year old junior in highschool who is also enrolled and taking classes in finger lakes community college.</p>
                 </div>
             </div>
-           </div>
         </div>
     </section>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/postprocessing/EffectComposer.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/postprocessing/Pass.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/postprocessing/RenderPass.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/postprocessing/ShaderPass.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/shaders/CopyShader.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/shaders/LuminosityHighPassShader.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/postprocessing/UnrealBloomPass.js"></script>
+
     <script src="webgl.js"></script>
     <script src="main.js"></script>
-    
     <script>
         window.formspree = window.formspree || function () { (formspree.q = formspree.q || []).push(arguments); };
         formspree('initForm', { formElement: '#hero-form', formId: 'xkokqdyo' });
