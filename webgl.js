@@ -2,6 +2,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const bgCanvas = document.querySelector('#webgl-canvas');
     const bgScene = new THREE.Scene();
 
+    bgScene.background = new THREE.Color(0x080D17);
+
     const bgCamera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
     bgCamera.position.z = 40;
 
@@ -24,7 +26,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     let particles = [];
-    const particleCount = 500; 
+    const isMobile = window.innerWidth < 768;
+    const particleCount = isMobile ? 0 : 500; 
 
     const geometry = new THREE.BoxGeometry(0.3, 0.3, 0.05);
     const colors = [0xFF8A00, 0x9D00FF, 0x4A5568, 0xFFE5D0];
@@ -89,7 +92,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const allForms = document.querySelectorAll('form');
     allForms.forEach(form => {
         form.addEventListener('submit', () => {
+            if (document.body.classList.contains('no-effects')) return;
             playSatisfyingClick();
+            if (window.innerWidth < 768) return;
             
             const burstCount = 200;
             for (let i = 0; i < burstCount; i++) {
@@ -247,11 +252,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (logoContainer) {
         logoContainer.addEventListener('click', () => {
+            if (document.body.classList.contains('no-effects')) return;
             playSatisfyingClick();
 
             if (logoMesh) {
                 logoMesh.userData.targetScale = 1.3; 
             }
+
+            if (window.innerWidth < 768) return;
 
             particles.forEach(p => {
                 const dx = p.position.x;
@@ -408,6 +416,7 @@ document.addEventListener('DOMContentLoaded', () => {
         let hoverInterval;
         
         contactBtn.addEventListener('mouseenter', () => {
+            if (window.innerWidth < 768 || document.body.classList.contains('no-effects')) return;
             hoverInterval = setInterval(() => {
                 const color = colors[Math.floor(Math.random() * colors.length)];
                 const material = new THREE.MeshBasicMaterial({ color: color, transparent: true, opacity: 1.0 });
@@ -432,32 +441,35 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         contactBtn.addEventListener('click', (e) => {
-            playSatisfyingClick();
-            
-            for (let i = 0; i < 300; i++) {
-                const color = colors[Math.floor(Math.random() * colors.length)];
-                const material = new THREE.MeshBasicMaterial({ color: color, transparent: true, opacity: 1.0 });
-                const burstMesh = new THREE.Mesh(geometry, material);
-                
-                burstMesh.position.set(0, -30, 15);
-                
-                const angle = Math.random() * Math.PI * 2; 
-                const speed = (Math.random() * 5) + 3.0; 
+            if (!document.body.classList.contains('no-effects')) {
+                playSatisfyingClick();
+                if (window.innerWidth >= 768) {
+                    for (let i = 0; i < 300; i++) {
+                        const color = colors[Math.floor(Math.random() * colors.length)];
+                        const material = new THREE.MeshBasicMaterial({ color: color, transparent: true, opacity: 1.0 });
+                        const burstMesh = new THREE.Mesh(geometry, material);
+                        
+                        burstMesh.position.set(0, -30, 15);
+                        
+                        const angle = Math.random() * Math.PI * 2; 
+                        const speed = (Math.random() * 5) + 3.0; 
 
-                burstMesh.userData = {
-                    velocity: new THREE.Vector3(
-                        Math.cos(angle) * speed, 
-                        Math.sin(angle) * speed, 
-                        (Math.random() - 0.5) * 4 
-                    ),
-                    rotSpeedX: (Math.random() - 0.5) * 0.8,
-                    rotSpeedY: (Math.random() - 0.5) * 0.8,
-                    driftSpeedY: 0, driftSpeedX: 0,
-                    isBurstParticle: true, life: 1.5 
-                };
+                        burstMesh.userData = {
+                            velocity: new THREE.Vector3(
+                                Math.cos(angle) * speed, 
+                                Math.sin(angle) * speed, 
+                                (Math.random() - 0.5) * 4 
+                            ),
+                            rotSpeedX: (Math.random() - 0.5) * 0.8,
+                            rotSpeedY: (Math.random() - 0.5) * 0.8,
+                            driftSpeedY: 0, driftSpeedX: 0,
+                            isBurstParticle: true, life: 1.5 
+                        };
 
-                bgScene.add(burstMesh);
-                particles.push(burstMesh);
+                        bgScene.add(burstMesh);
+                        particles.push(burstMesh);
+                    }
+                }
             }
         });
     }
@@ -498,12 +510,14 @@ document.addEventListener('DOMContentLoaded', () => {
     function animate() {
         requestAnimationFrame(animate);
 
+        const noEffects = document.body.classList.contains('no-effects');
+
         const rawSpeed = Math.sqrt(globalVelX*globalVelX + globalVelY*globalVelY);
         smoothedShaderSpeed += (rawSpeed - smoothedShaderSpeed) * 0.1;
         globalVelX *= 0.5; 
         globalVelY *= 0.5;
         
-        const clampedShaderSpeed = Math.min(smoothedShaderSpeed * 0.02, 1.5);
+        const clampedShaderSpeed = noEffects ? 0.0 : Math.min(smoothedShaderSpeed * 0.02, 1.5);
 
         if (logoUniforms) {
             logoUniforms.time.value += 0.02;
@@ -523,6 +537,12 @@ document.addEventListener('DOMContentLoaded', () => {
         let survivingParticles = [];
 
         particles.forEach(p => {
+            p.visible = !noEffects;
+            if (noEffects) {
+                survivingParticles.push(p);
+                return;
+            }
+
             p.rotation.x += p.userData.rotSpeedX;
             p.rotation.y += p.userData.rotSpeedY;
             
@@ -599,40 +619,43 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         if (logoScene && logoCamera && logoRenderer && logoMesh) {
-            
-            logoRaycaster.setFromCamera(logoMouse, logoCamera);
-            const intersects = logoRaycaster.intersectObject(logoMesh);
-            
-            if (intersects.length > 0) {
-                const uv = intersects[0].uv;
-                logoUniforms.uMouse.value.x += (uv.x - logoUniforms.uMouse.value.x) * 0.15; 
-                logoUniforms.uMouse.value.y += (uv.y - logoUniforms.uMouse.value.y) * 0.15;
-                logoUniforms.uHoverState.value += (1.0 - logoUniforms.uHoverState.value) * 0.1;
-            } else {
-                logoUniforms.uHoverState.value += (0.0 - logoUniforms.uHoverState.value) * 0.05;
-            }
-
-            const targetRotationX = normalizedMouseY * 0.35; 
-            const targetRotationY = normalizedMouseX * 0.35; 
-
-            logoMesh.rotation.x += (targetRotationX - logoMesh.rotation.x) * 0.1;
-            logoMesh.rotation.y += (targetRotationY - logoMesh.rotation.y) * 0.1;
-
-            logoMesh.scale.x += (logoMesh.userData.targetScale - logoMesh.scale.x) * 0.1;
-            logoMesh.scale.y += (logoMesh.userData.targetScale - logoMesh.scale.y) * 0.1;
-            logoMesh.scale.z += (logoMesh.userData.targetScale - logoMesh.scale.z) * 0.1;
-
-            if (logoMesh.userData.targetScale > 1.0) {
-                logoMesh.userData.targetScale -= 0.02;
-                if (logoMesh.userData.targetScale < 1.0) {
-                    logoMesh.userData.targetScale = 1.0;
+            if (!noEffects) {
+                logoRaycaster.setFromCamera(logoMouse, logoCamera);
+                const intersects = logoRaycaster.intersectObject(logoMesh);
+                
+                if (intersects.length > 0) {
+                    const uv = intersects[0].uv;
+                    logoUniforms.uMouse.value.x += (uv.x - logoUniforms.uMouse.value.x) * 0.15; 
+                    logoUniforms.uMouse.value.y += (uv.y - logoUniforms.uMouse.value.y) * 0.15;
+                    logoUniforms.uHoverState.value += (1.0 - logoUniforms.uHoverState.value) * 0.1;
+                } else {
+                    logoUniforms.uHoverState.value += (0.0 - logoUniforms.uHoverState.value) * 0.05;
                 }
-            }
 
-            logoRenderer.render(logoScene, logoCamera);
+                const targetRotationX = normalizedMouseY * 0.35; 
+                const targetRotationY = normalizedMouseX * 0.35; 
+
+                logoMesh.rotation.x += (targetRotationX - logoMesh.rotation.x) * 0.1;
+                logoMesh.rotation.y += (targetRotationY - logoMesh.rotation.y) * 0.1;
+
+                logoMesh.scale.x += (logoMesh.userData.targetScale - logoMesh.scale.x) * 0.1;
+                logoMesh.scale.y += (logoMesh.userData.targetScale - logoMesh.scale.y) * 0.1;
+                logoMesh.scale.z += (logoMesh.userData.targetScale - logoMesh.scale.z) * 0.1;
+
+                if (logoMesh.userData.targetScale > 1.0) {
+                    logoMesh.userData.targetScale -= 0.02;
+                    if (logoMesh.userData.targetScale < 1.0) {
+                        logoMesh.userData.targetScale = 1.0;
+                    }
+                }
+
+                logoRenderer.render(logoScene, logoCamera);
+            }
         }
 
         gameLogoScenes.forEach(obj => {
+            if (noEffects) return;
+
             if (obj.uniforms) {
                 obj.uniforms.time.value += 0.02;
                 obj.uniforms.uVelocity.value = clampedShaderSpeed; 
