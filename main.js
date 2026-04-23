@@ -1,15 +1,33 @@
 document.addEventListener('DOMContentLoaded', () => {
     const navbar = document.querySelector('.navbar');
+    const navLogo = document.getElementById('nav-logo');
+    const effectsToggle = document.getElementById('effects-toggle');
+    const effectsIcon = effectsToggle.querySelector('i');
+    
+    if (localStorage.getItem('effects') === 'off') {
+        document.body.classList.add('no-effects');
+        effectsIcon.classList.remove('fa-wand-magic-sparkles');
+        effectsIcon.classList.add('fa-ban');
+    }
+
+    effectsToggle.addEventListener('click', () => {
+        document.body.classList.toggle('no-effects');
+        if (document.body.classList.contains('no-effects')) {
+            effectsIcon.classList.remove('fa-wand-magic-sparkles');
+            effectsIcon.classList.add('fa-ban');
+            localStorage.setItem('effects', 'off');
+        } else {
+            effectsIcon.classList.remove('fa-ban');
+            effectsIcon.classList.add('fa-wand-magic-sparkles');
+            localStorage.setItem('effects', 'on');
+        }
+    });
     
     window.addEventListener('scroll', () => {
-        if (window.scrollY > 20) {
-            navbar.style.background = 'rgba(10, 11, 16, 0.95)';
-            navbar.style.borderBottom = '1px solid rgba(255,255,255,0.05)';
-            navbar.style.backdropFilter = 'blur(10px)';
+        if (window.scrollY > 100) {
+            if (navLogo) navLogo.classList.add('visible');
         } else {
-            navbar.style.background = 'transparent';
-            navbar.style.borderBottom = 'none';
-            navbar.style.backdropFilter = 'none';
+            if (navLogo) navLogo.classList.remove('visible');
         }
     });
 
@@ -172,7 +190,7 @@ document.addEventListener('DOMContentLoaded', () => {
         contactBtn.addEventListener('click', (e) => {
             e.preventDefault(); 
             
-            navigator.clipboard.writeText('incrediblegaemz@gmail.com').then(() => {
+            navigator.clipboard.writeText('incrediblegaemzco@gmail.com').then(() => {
                 copyToast.classList.add('show');
                 
                 setTimeout(() => {
