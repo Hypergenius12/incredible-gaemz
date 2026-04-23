@@ -23,10 +23,9 @@
     <meta name="twitter:title" content="Incredible Gaemz | Coming Soon">
     <meta name="twitter:description" content="Incredible Gaemz creates unique, fun board and card games designed to bring families and friends together. Discover our upcoming games like Rack 'em Up and Stick Wars!">
     <meta name="twitter:image" content="https://incrediblegaemz.com/LOGO%20(2).png">
-<link rel="icon" type="image/x-icon" href="favicon.ico?v=2">
+    <link rel="icon" type="image/x-icon" href="favicon.ico?v=2">
     <link rel="apple-touch-icon" href="favicon.ico?v=2">
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script type="application/ld+json">
     {
@@ -58,7 +57,7 @@
     <nav class="navbar">
         <div class="nav-container">
             <div class="logo-container">
-                <img src="LOGO.png" alt="Incredible Gaemz Logo" class="nav-logo">
+                <img src="LOGO.png" alt="Incredible Gaemz Logo" class="nav-logo" id="nav-logo">
             </div>
             <div class="nav-right">
                 <ul class="nav-links">
@@ -66,14 +65,19 @@
                     <li><a href="#about">About</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
+                <button id="effects-toggle" class="theme-toggle-btn" aria-label="Toggle Effects" title="Toggle Visual Effects">
+                    <i class="fa-solid fa-wand-magic-sparkles"></i>
+                </button>
                 <a href="#notify-section" class="nav-btn-orange webgl-btn">Get Notified</a>
             </div>
         </div>
     </nav>
     <header id="notify-section" class="hero-section interactive-text-container">
         <div class="hero-content">
-            <div id="hero-logo-container" class="hero-logo-container" title="Click for a surprise!"></div>
-            <h1 class="hero-title header-load">Something incredible is coming.</h1>
+            <div id="hero-logo-container" class="hero-logo-container" title="Click for a surprise!">
+                <img src="LOGO.png" alt="Incredible Gaemz Official Company Logo - Board and Card Games" class="seo-image">
+            </div>
+            <h1 class="hero-title header-load">Something incredible is dropping soon.</h1>
             <p class="hero-subtitle interactive-text body-spin">Games that bring people together.</p>
             <form id="hero-form" class="hero-form">
                 <div data-fs-success class="fs-success-msg"></div>
@@ -83,7 +87,7 @@
                     <button type="submit" class="hero-notify-btn webgl-btn" data-fs-submit-btn>Notify Me</button>
                 </div>
                 <span data-fs-error="email" class="fs-field-error"></span>
-                <p class="form-disclaimer interactive-text body-spin">Be the first to know when we launch.</p>
+                <p class="form-disclaimer interactive-text body-spin">Drop your email to get pinged when we launch.</p>
             </form>
         </div>
     </header>
@@ -93,10 +97,13 @@
                 <div class="badge badge-purple">
                     <span class="dot"></span> LAUNCHING SOON
                 </div>
-                <div class="card-logo-container" id="rack-logo-container"></div>
+                <div class="card-logo-container" id="rack-logo-container">
+                    <img src="logo eack-jukebox-bg-removed.png" alt="Rack 'em Up - The Original Card Game Box Art and Logo" class="seo-image tilted-logo">
+                </div>
                 <h3 class="card-game-title header-load">THE ORIGINAL CARD GAME</h3>
                 <p class="card-game-desc interactive-text body-spin">
-                    A quick and simple card game packed with tension, comebacks, and chaos. You take turns drawing cards that grant positive or negative points. Utilize action cards to shift the momentum, and rack up the most points before that game is over. Coming to your table very soon.</p>
+                    A fast-paced card game packed with tension and comebacks. Take turns drawing cards for positive or negative points. Use action cards to flip the momentum and rack up the most points before the game ends. Its small and easy to understand. Coming to your table soon.
+                </p>
                 <div class="game-stats">
                     <span><i class="fa-solid fa-layer-group"></i> Card Game</span>
                     <span><i class="fa-solid fa-user-group"></i> 2–6 Players</span>
@@ -118,10 +125,12 @@
                 <div class="badge badge-orange">
                     <span class="dot"></span> IN DEVELOPMENT
                 </div>
-                <div class="card-logo-container" id="stick-logo-container"></div>
+                <div class="card-logo-container" id="stick-logo-container">
+                    <img src="STICKWARS (1).png" alt="Stick Wars - The Battle Card Game Logo and Artwork" class="seo-image">
+                </div>
                 <h3 class="card-game-title header-load">THE BATTLE CARD GAME</h3>
                 <p class="card-game-desc interactive-text body-spin">
-                    Deploy your stick warriors and ignite the chaos. Command unique powers, scavenge powerful weapons, and outsmart your rivals in an all-out tactical brawl. With total freedom to use your abilities any way you choose, every battle is a new story of infinite fun. Currently in active development.
+                    Drop in your stick warriors and start the chaos. Use sick powers, take overpowered weapons, and outplay your friends in a massive tactical brawl. You have total freedom to use your abilities however you want, so every game is completely different. Currently in the works but will hopefully be released sometime after Rack 'em Up.
                 </p>
                 <div class="game-stats">
                     <span><i class="fa-solid fa-layer-group"></i> Battle Game</span>
