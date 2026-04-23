@@ -3,18 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Incredible Gaemzcreates unique, fun board and card games designed to bring families and friends together. Discover our upcoming games like Rack 'em Up and Stick Wars!">
-    <meta name="keywords" content="Incredible Gaemz, Incredible Games, Incredible Gamez, Incredible Gaems, board games, card games, tabletop games">
-    <link rel="icon" type="image/png" sizes="any" href="LOGO (2).png">
-    <link rel="apple-touch-icon" href="LOGO (2).png">
     <title>Incredible Gaemz | Coming Soon</title>
+    <meta name="title" content="Incredible Gaemz | Coming Soon">
+    <meta name="description" content="Incredible Gaemz creates unique, fun board and card games designed to bring families and friends together. Discover our upcoming games like Rack 'em Up and Stick Wars!">
+    <meta name="keywords" content="Incredible Gaemz, Incredible Games, Incredible Gamez, Incredible Gaems, board games, card games, tabletop games">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="author" content="Caleb Abbe">
+    <link rel="canonical" href="https://incrediblegaemz.com/">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Incredible Gaemz">
+    <meta property="og:title" content="Incredible Gaemz | Coming Soon">
+    <meta property="og:description" content="Incredible Gaemz creates unique, fun board and card games designed to bring families and friends together. Discover our upcoming games like Rack 'em Up and Stick Wars!">
+    <meta property="og:url" content="https://incrediblegaemz.com/">
+    <meta property="og:image" content="https://incrediblegaemz.com/LOGO%20(2).png">
+    <meta property="og:image:width" content="144">
+    <meta property="og:image:height" content="144">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Incredible Gaemz | Coming Soon">
+    <meta name="twitter:description" content="Incredible Gaemz creates unique, fun board and card games designed to bring families and friends together. Discover our upcoming games like Rack 'em Up and Stick Wars!">
+    <meta name="twitter:image" content="https://incrediblegaemz.com/LOGO%20(2).png">
+    <link rel="icon" type="image/png" sizes="144x144" href="LOGO (2).png">
+    <link rel="apple-touch-icon" href="LOGO (2).png">
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Incredible Gaemz",
+      "alternateName": ["Incredible Games", "Incredible Gamez", "Incredible Gaems"],
+      "url": "https://incrediblegaemz.com/",
+      "logo": "https://incrediblegaemz.com/LOGO%20(2).png",
+      "description": "Incredible Gaemz creates unique, fun board and card games designed to bring families and friends together.",
+      "founder": {
+        "@type": "Person",
+        "name": "Caleb Abbe"
+      },
+      "sameAs": [
+        "https://incrediblegaemz.com/"
+      ]
+    }
+    </script>
+    <script>
+        if ('scrollRestoration' in history) {
+            history.scrollRestoration = 'manual';
+        }
+        window.scrollTo(0, 0);
+    </script>
 </head>
 <body>
     <canvas id="webgl-canvas"></canvas>
-
     <nav class="navbar">
         <div class="nav-container">
             <div class="logo-container">
@@ -24,12 +64,12 @@
                 <ul class="nav-links">
                     <li><a href="#games">Games</a></li>
                     <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
                 </ul>
                 <a href="#notify-section" class="nav-btn-orange webgl-btn">Get Notified</a>
             </div>
         </div>
     </nav>
-
     <header id="notify-section" class="hero-section interactive-text-container">
         <div class="hero-content">
             <div id="hero-logo-container" class="hero-logo-container" title="Click for a surprise!"></div>
@@ -47,7 +87,6 @@
             </form>
         </div>
     </header>
-
     <section id="games" class="games-section">
         <div class="games-grid">
             <div class="game-card interactive-text-container">
@@ -75,7 +114,6 @@
                     <span data-fs-error="email" class="fs-field-error"></span>
                 </form>
             </div>
-
             <div class="game-card interactive-text-container">
                 <div class="badge badge-orange">
                     <span class="dot"></span> IN DEVELOPMENT
@@ -104,7 +142,6 @@
             </div>
         </div>
     </section>
-
     <section id="about" class="about-section">
         <div class="section-heading">
             <h2 class="about-title header-load">About Incredible Gaemz</h2>
@@ -120,7 +157,18 @@
             </div>
         </div>
     </section>
-
+    <section id="contact" class="contact-section">
+        <div class="section-heading">
+            <h2 class="about-title header-load">Get In Touch</h2>
+            <p class="about-subtitle interactive-text body-spin">Have questions, feedback, or want to collaborate?</p>
+        </div>
+        <div class="contact-container interactive-text-container">
+            <a href="mailto:incrediblegaemz@gmail.com" id="contact-email-btn" class="webgl-btn massive-btn">
+                <i class="fa-solid fa-envelope"></i> incrediblegaemz@gmail.com
+            </a>
+            <div id="copy-toast" class="copy-toast"><i class="fa-solid fa-check"></i> Copied to clipboard!</div>
+        </div>
+    </section>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/postprocessing/EffectComposer.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/postprocessing/Pass.js"></script>
@@ -129,7 +177,6 @@
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/shaders/CopyShader.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/shaders/LuminosityHighPassShader.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/postprocessing/UnrealBloomPass.js"></script>
-
     <script src="webgl.js"></script>
     <script src="main.js"></script>
     <script>
